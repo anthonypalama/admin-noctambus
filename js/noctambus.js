@@ -16,20 +16,23 @@ $(document).on('pageinit', '#Ticket', function () {
 });
 
 $(document).on('pageinit', '#page9', function () {
-
-    $.ajax({
-        url: 'https://api.parse.com/1/classes/Tickets',
-        headers: { 'X-Parse-Application-Id': 'PIKbWCJ808pCwESSaqPbOiey1v8YP9ju6osXBbAw', 'X-Parse-REST-API-Key': 'SHqOLSBw51SjSqbqebycKPZlg6NxgjTMyN7EcN2p' },
-        type: 'GET',
-        contentType: "application/json",
-        data: 'where={"code":"'+ticketInfo.CODE_TICKET+'"}',
-        success: function (result) {
-            ajax2.parseJSONP(result);
-        },
-        error: function (request, error) {
-            alert('Network error has occurred please try again!');
-        }
-    });
+    if (ticketInfo.CODE_TICKET ==0){
+        effacer('#page9');
+    }else{
+        $.ajax({
+            url: 'https://api.parse.com/1/classes/Tickets',
+            headers: { 'X-Parse-Application-Id': 'PIKbWCJ808pCwESSaqPbOiey1v8YP9ju6osXBbAw', 'X-Parse-REST-API-Key': 'SHqOLSBw51SjSqbqebycKPZlg6NxgjTMyN7EcN2p' },
+            type: 'GET',
+            contentType: "application/json",
+            data: 'where={"code":"'+ticketInfo.CODE_TICKET+'"}',
+            success: function (result) {
+                ajax2.parseJSONP(result);
+            },
+            error: function (request, error) {
+                alert('Network error has occurred please try again!');
+            }
+        });
+    }
 });
 
 $(document).on('click', '#modifierTicket', function () {
@@ -37,7 +40,7 @@ $(document).on('click', '#modifierTicket', function () {
     ticketInfo.DESCRIPTION_TICKET = $('#descriptionTicket').val();
     ticketInfo.PRIX_TICKET = parseFloat($('#prixTicket').val());
     ticketInfo.NAME_TICKET = $('#nameTicket').val();
-	$.ajax({
+    $.ajax({
         url: 'https://api.parse.com/1/classes/Tickets/'+ticketInfo.OBJECTID_TICKET,
         headers: { 'X-Parse-Application-Id': 'PIKbWCJ808pCwESSaqPbOiey1v8YP9ju6osXBbAw', 'X-Parse-REST-API-Key': 'SHqOLSBw51SjSqbqebycKPZlg6NxgjTMyN7EcN2p' },
         type: 'PUT',
@@ -71,17 +74,49 @@ $(document).on('click', '#supprimerTicket', function () {
     });
     
 });
+    // This function is called when the user clicks on Upload to Parse. It will create the REST API request to upload this image to Parse.
+
+$(document).on('click', '#uploadbutton', function () {
+    ticketInfo.PICTURE_TICKET = $('#fileselect').val();
+    console.log(ticketInfo.PICTURE_TICKET);
+     $.ajax({
+        url: 'https://api.parse.com/1/files/'+ticketInfo.PICTURE_TICKET,
+        headers: { 'X-Parse-Application-Id': 'PIKbWCJ808pCwESSaqPbOiey1v8YP9ju6osXBbAw', 'X-Parse-REST-API-Key': 'SHqOLSBw51SjSqbqebycKPZlg6NxgjTMyN7EcN2p' },
+        type: 'POST',
+        contentType: "image/jpeg",
+       success: function (result) {
+        
+       }
+   });
+});
+
+$(document).on('click', '#btnCreerTicket', function () {
+    
+    ticketInfo.CODE_TICKET = $('#codeTpg').val();
+    ticketInfo.DESCRIPTION_TICKET = $('#descriptionTicket').val();
+    ticketInfo.PRIX_TICKET = parseFloat($('#prixTicket').val());
+    ticketInfo.NAME_TICKET = $('#nameTicket').val();
+    $.ajax({
+        url: 'https://api.parse.com/1/classes/Tickets',
+        headers: { 'X-Parse-Application-Id': 'PIKbWCJ808pCwESSaqPbOiey1v8YP9ju6osXBbAw', 'X-Parse-REST-API-Key': 'SHqOLSBw51SjSqbqebycKPZlg6NxgjTMyN7EcN2p' },
+        type: 'POST',
+        contentType: "application/json",
+        data: '{"code":"'+ticketInfo.CODE_TICKET+'", "name":"'+ticketInfo.NAME_TICKET+'", "descriptionT":"'+ticketInfo.DESCRIPTION_TICKET+'", "prix":'+ticketInfo.PRIX_TICKET+',"deleteTicket":false, "logo":{"name": "...'+ticketInfo.PICTURE_TICKET+'", "__type": "File"}}',
+        success: function (result) {
+            $.mobile.changePage(href = "page3.html", { transition: "slide", changeHash: false });
+            location.reload();
+        },
+        error: function (request, error) {
+            alert('Network error has occurred please try again!');
+        }
+    });
+    
+});
+
 
 $(document).on('click','#creerTicket', function(){
-
-	$('#codeTpg').val("");
-    $('#descriptionTicket').val("");
-    $('#prixTicket').val("");
-    $('#nameTicket').val("");
-
-	$('#btnCreerTicket').show();
-	$('#supprimerTicket').hide();
-	$('#modifierTicket').hide();
+    ticketInfo.CODE_TICKET = "0";
+    $.mobile.changePage(href = "page9.html", { transition: "slide", changeHash: false });
 });
 
 $(document).on('vclick', '#panTicket li a', function () {
@@ -97,6 +132,7 @@ var ticketInfo = {
     DESCRIPTION_TICKET : null,
     NAME_TICKET : null,
     PRIX_TICKET : null,
+    PICTURE_TICKET : null,
     
 
 }
@@ -120,4 +156,12 @@ var ajax2 = {
 			$('#modifierTicket').show();
         	$('#btnCreerTicket').hide();
     }
+}
+function effacer(id){
+    $(':input',id)
+   .not(':button, :submit')
+   .val('');
+   $('#supprimerTicket').hide();
+   $('#modifierTicket').hide();
+   $('#btnCreerTicket').show();
 }
