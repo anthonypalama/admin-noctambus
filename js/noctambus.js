@@ -74,22 +74,6 @@ $(document).on('click', '#supprimerTicket', function () {
     });
     
 });
-    // This function is called when the user clicks on Upload to Parse. It will create the REST API request to upload this image to Parse.
-
-$(document).on('click', '#uploadbutton', function () {
-    ticketInfo.PICTURE_TICKET = $('#fileselect').val();
-    console.log(ticketInfo.PICTURE_TICKET);
-     $.ajax({
-        url: 'https://api.parse.com/1/files/'+ticketInfo.PICTURE_TICKET,
-        headers: { 'X-Parse-Application-Id': 'PIKbWCJ808pCwESSaqPbOiey1v8YP9ju6osXBbAw', 'X-Parse-REST-API-Key': 'SHqOLSBw51SjSqbqebycKPZlg6NxgjTMyN7EcN2p' },
-        type: 'POST',
-        contentType: "image/jpeg",
-       success: function (result) {
-        
-       }
-   });
-});
-
 $(document).on('click', '#btnCreerTicket', function () {
     
     ticketInfo.CODE_TICKET = $('#codeTpg').val();
