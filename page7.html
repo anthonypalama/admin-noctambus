@@ -13,25 +13,33 @@
   <script src="js/jquery-1.9.1.min.js"></script>
   <script src="js/jquery.mobile-1.3.1.min.js"></script>
   <script src="js/codiqa.ext.min.js"></script>
-  <script src="js/noctambus.js"></script>
+  <script src="js/noctambus-ligne.js"></script>
 </head>
 <body>
-  <div data-role="page" data-control-title="Bus" id="page7">
+   <div data-role="page" data-control-title="Lignes" id="Lignes">
+   <div data-theme="a" data-role="header">
+        <a id="home" data-role="button" href="page1.html" data-icon="home" data-iconpos="notext"
+        class="ui-btn-right">
+        </a>
+        <h3>
+            Lignes
+        </h3>
+    </div>
+    <div data-role="content">
       <div data-role="content">
           <h2>
-              Quel bus souhaitez-vous modifier
+              Quel ligne souhaitez-vous modifier
           </h2>
-          <ul id="panBus" data-role="listview" data-divider-theme="b" data-inset="true">
+          <a id="creerTicket" data-role="button"  data-inline="true">
+              Créer une nouvelle ligne
+          </a>
+          <ul id="panLigne" data-role="listview" data-divider-theme="b" data-inset="true">
               <li data-role="list-divider" role="heading">
-                  Divider
-              </li>
-              <li data-theme="c">
-                  <a href="" data-transition="slide">
-                      Button
-                  </a>
+                  Les lignes
               </li>
           </ul>
       </div>
+  </div>
   </div>
 </body>
 </html>
