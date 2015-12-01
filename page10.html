@@ -41,37 +41,36 @@
                 Nom de la ligne
             </label>
               <input name="" id="nomLigne" placeholder="Nom de la ligne" value="" type="text"/>
+          </div>
           <div data-role="fieldcontain" data-controltype="textinput">
            <label for="directionLigne">
                 Direction de la ligne
             </label>
               <input name="" id="directionLigne" placeholder="Direction de la ligne" value="" type="text"/>
           </div>
-          <div data-role="fieldcontain" data-controltype="textinput">	
-          	<label for="codeTpg">
-                Type de billet
+          <div data-role="fieldcontain" data-controltype="textinput"> 
+            <label for="logoLigne">
+                Nom de l'image du logo
             </label>
-              <input name="" id="nameTicket" placeholder="Billet ou Carte journalière" value="" type="text"/>
+              <input name="" id="logoLigne" placeholder="Nom de l'image du logo" value="" type="text"/>
           </div>
           <div data-role="fieldcontain" data-controltype="textinput"> 
             <label for="arretTpg">
                 Arrêts
             </label>
-              <input name="" id="nameTicket" placeholder="Billet ou Carte journalière" value="" type="text"/>
+              <ul id="panArrets" data-role="listview" data-divider-theme="b" data-inset="true">
+              <li data-role="list-divider" role="heading">
+                  Les Arrêts
+              </li>
+          </ul>
           </div>
-       	<div data-role="fieldcontain" data-controltype="textinput">	
-          	<label for="logoLigne">
-                Nom de l'image du logo
-            </label>
-              <input name="" id="logoLigne" placeholder="Nom de l'image du logo" value="" type="text"/>
-          </div>
-          <a id="modifierTicket" data-role="button"  data-inline="true" >
+          <a id="modifierLigne" data-role="button"  data-inline="true" >
               Modifier
           </a>
-          <a id="supprimerTicket" data-role="button"  data-inline="true" >
+          <a id="supprimerLigne" data-role="button"  data-inline="true" >
               Supprimer
           </a>
-          <a id="btnCreerTicket" data-role="button"  data-inline="true" >
+          <a id="btnCreerLigne" data-role="button"  data-inline="true" >
               Créer 
           </a>	
       </div>
