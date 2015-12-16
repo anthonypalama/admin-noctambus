@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"></meta>
+  <title>unArret | Noctambus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  <meta name="apple-mobile-web-app-capable" content="yes"></meta>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"></meta>
+
+  <link href="css/codiqa.ext.min.css" rel="stylesheet"></link>
+  <link href="css/jquery.mobile-1.3.1.min.css" rel="stylesheet"></link>
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/jquery.mobile-1.3.1.min.js"></script>
+  <script src="js/codiqa.ext.min.js"></script>
+  <script src="js/noctambus-ticket.js"></script>
+</head>
+<body>
+  <div data-role="page" data-control-title="unArret" id="page11">
+   <div data-theme="a" data-role="header">
+        <a id="retour" data-role="button" href="page12.html" data-icon="arrow-l" data-iconpos="left"
+        class="ui-btn-left">
+            Retour
+        </a>
+        <a id="home" data-role="button" href="page1.html" data-icon="home" data-iconpos="notext"
+        class="ui-btn-right">
+        </a>
+        <h3>
+            Horaire
+        </h3>
+    </div>
+      <div data-role="content">
+          <div data-role="fieldcontain" data-controltype="textinput">
+           <label for="nomArret">
+                Nom de l'arret
+            </label>
+              <input name="" id="nomArret" placeholder="Nom de l'arret" value="" type="text"/>
+          </div>
+          <div data-role="fieldcontain" data-controltype="textinput">
+           <label for="codeArretPhysique">
+                Code Arrêt Physique
+            </label>
+              <input name="" id="codeArretPhysique" placeholder="Code Arrêt Physique" value="" type="text"/>
+          </div>
+          <div data-role="fieldcontain" data-controltype="textarea">
+           <label for="codeArretCom">
+                Code de l'arret commercial
+            </label>
+            <input name="" id="codeArretCom" placeholder="Code de l'arret commercial" value="" type="text"/>
+          </div>
+          <div data-role="fieldcontain" data-controltype="textinput">
+           <label for="longitudeArret">
+                Longitude de l'arrêt
+            </label>
+              <input name="" id="longitudeArret" placeholder="Longitude de l'arret" value="" type="text"/>
+          </div>
+          <div data-role="fieldcontain" data-controltype="textinput">
+           <label for="latitudeArret">
+                Latitude de l'arrêt
+            </label>
+              <input name="" id="latitudeArret" placeholder="Latitude de l'arret" value="" type="text"/>
+          </div> 
+          <div data-role="fieldcontain" data-controltype="textinput"> 
+              <ul id="panLigneArret" data-role="listview" data-divider-theme="b" data-inset="true">
+              <li data-role="list-divider" role="heading">
+                  Les lignes
+              </li>
+          </ul>
+          </div>
+          
+          <a id="modifierArret" data-role="button"  data-inline="true" >
+              Modifier
+          </a>
+          <a id="supprimerArret" data-role="button"  data-inline="true" >
+              Supprimer
+          </a>
+          <a id="btnCreerArret" data-role="button"  data-inline="true" >
+              Créer 
+          </a>	
+      </div>
+  </div>
+</body>
+</html>

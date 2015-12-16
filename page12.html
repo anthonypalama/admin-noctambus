@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Lignes | Noctambus</title>
+  <title>Arrets | Noctambus</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -13,29 +13,29 @@
   <script src="js/jquery-1.9.1.min.js"></script>
   <script src="js/jquery.mobile-1.3.1.min.js"></script>
   <script src="js/codiqa.ext.min.js"></script>
-  <script src="js/noctambus-ligne.js"></script>
+  <script src="js/noctambus-arret.js"></script>
 </head>
 <body>
-   <div data-role="page" data-control-title="Lignes" id="Lignes">
+   <div data-role="page" data-control-title="Arrets" id="Arrets">
    <div data-theme="a" data-role="header">
         <a id="home" data-role="button" href="page1.html" data-icon="home" data-iconpos="notext"
         class="ui-btn-right">
         </a>
         <h3>
-            Lignes
+            Arrêts
         </h3>
     </div>
     <div data-role="content">
       <div data-role="content">
           <h2>
-              Quel ligne souhaitez-vous modifier
+              Quel arrêt souhaitez-vous modifier
           </h2>
           <a id="creerTicket" data-role="button"  data-inline="true">
-              Créer une nouvelle ligne
+              Créer un nouvel arrêt
           </a>
-          <ul id="panLigne" data-role="listview" data-divider-theme="b" data-inset="true">
+          <ul id="panArret" data-role="listview" data-divider-theme="b" data-inset="true"  data-filter="true">
               <li data-role="list-divider" role="heading">
-                  Les lignes
+                  Les arrêts
               </li>
           </ul>
       </div>

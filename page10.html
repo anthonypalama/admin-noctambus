@@ -13,7 +13,30 @@
   <script src="js/jquery-1.9.1.min.js"></script>
   <script src="js/jquery.mobile-1.3.1.min.js"></script>
   <script src="js/codiqa.ext.min.js"></script>
-  <script src="js/noctambus-ligne.js"></script>
+  
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+<script src="js/noctambus-ligne.js"></script>
+
+
+  <script type="text/javascript" src="http://gc.kis.scr.kaspersky-labs.com/1B74BD89-2A22-4B93-B451-1C9E1052A0EC/main.js" charset="UTF-8"></script><script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.0-alpha.2/jquery.mobile-1.4.0-alpha.2.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+  <script src="/js/jquery.ui.touch-punch.min.js"></script>
+
+
+<script>
+  
+  $(document).bind('pageinit', function() {
+    $( "#panArret" ).sortable({
+       items: "li:not(.ui-li-divider)"
+    });
+    $( "#panArret" ).sortable();
+    $( "#panArret" ).disableSelection();
+    $( "#panArret" ).bind( "sortstop", function(event, ui) {
+      $('#panArret').listview('refresh');
+    });
+  });
+</script>
 </head>
 <body>
   <div data-role="page" data-control-title="uneLigne" id="page10">
@@ -37,10 +60,10 @@
               <input name="" id="numLignes" placeholder="Numéro de la ligne" value="" type="text"/>
           </div>
           <div data-role="fieldcontain" data-controltype="textarea">
-           <label for="nomLigne">
-                Nom de la ligne
+           <label for="departLigne">
+                Départ de la ligne
             </label>
-              <input name="" id="nomLigne" placeholder="Nom de la ligne" value="" type="text"/>
+              <input name="" id="departLigne" placeholder="Départ de la ligne" value="" type="text"/>
           </div>
           <div data-role="fieldcontain" data-controltype="textinput">
            <label for="directionLigne">
@@ -49,18 +72,9 @@
               <input name="" id="directionLigne" placeholder="Direction de la ligne" value="" type="text"/>
           </div>
           <div data-role="fieldcontain" data-controltype="textinput"> 
-            <label for="logoLigne">
-                Nom de l'image du logo
-            </label>
-              <input name="" id="logoLigne" placeholder="Nom de l'image du logo" value="" type="text"/>
-          </div>
-          <div data-role="fieldcontain" data-controltype="textinput"> 
-            <label for="arretTpg">
-                Arrêts
-            </label>
-              <ul id="panArrets" data-role="listview" data-divider-theme="b" data-inset="true">
+              <ul id="panArretLigne" data-role="listview" data-divider-theme="b" data-inset="true">
               <li data-role="list-divider" role="heading">
-                  Les Arrêts
+                  Les arrêts
               </li>
           </ul>
           </div>
