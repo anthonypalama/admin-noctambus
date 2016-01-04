@@ -104,6 +104,10 @@ function effacer(id){
    $('#modifierLigne').hide();
    $('#btnCreerLigne').show();
 }
+$(document).on('click','#creerArret', function(){
+    arretInfo.CODE_ARRET = "0";
+    $.mobile.changePage(href = "page11.html", { transition: "slide", changeHash: false });
+});
 
 
 var arretInfo = {
@@ -113,4 +117,5 @@ var arretInfo = {
     CODEARRETC_ARRET : null,
     LATITUDE_ARRET : null,
     LONGITUDE_ARRET : null,
+    CODE_ARRET : null,
 }

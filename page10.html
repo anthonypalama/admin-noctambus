@@ -22,21 +22,8 @@
   <script src="http://code.jquery.com/mobile/1.4.0-alpha.2/jquery.mobile-1.4.0-alpha.2.min.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
   <script src="/js/jquery.ui.touch-punch.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 
-
-<script>
-  
-  $(document).bind('pageinit', function() {
-    $( "#panArret" ).sortable({
-       items: "li:not(.ui-li-divider)"
-    });
-    $( "#panArret" ).sortable();
-    $( "#panArret" ).disableSelection();
-    $( "#panArret" ).bind( "sortstop", function(event, ui) {
-      $('#panArret').listview('refresh');
-    });
-  });
-</script>
 </head>
 <body>
   <div data-role="page" data-control-title="uneLigne" id="page10">
@@ -72,11 +59,11 @@
               <input name="" id="directionLigne" placeholder="Direction de la ligne" value="" type="text"/>
           </div>
           <div data-role="fieldcontain" data-controltype="textinput"> 
-              <ul id="panArretLigne" data-role="listview" data-divider-theme="b" data-inset="true">
+            <ul id="panArretLigne" data-role="listview" data-divider-theme="b" data-inset="true">
               <li data-role="list-divider" role="heading">
                   Les arrêts
               </li>
-          </ul>
+            </ul>
           </div>
           <a id="modifierLigne" data-role="button"  data-inline="true" >
               Modifier

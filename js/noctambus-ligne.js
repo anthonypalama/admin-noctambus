@@ -75,13 +75,36 @@ $(document).on('click', '#modifierLigne', function () {
         }
         
     tab=tab+"]";
-    console.log(tab);
-    $.ajax({
+  $.ajax({
+        url: 'https://api.parse.com/1/classes/ArretsPhysique',
+        headers: { 'X-Parse-Application-Id': 'PIKbWCJ808pCwESSaqPbOiey1v8YP9ju6osXBbAw', 'X-Parse-REST-API-Key': 'SHqOLSBw51SjSqbqebycKPZlg6NxgjTMyN7EcN2p' },
+        type: 'GET',
+        contentType: "application/json",
+        data: 'where={"codeArretPhysique":"'+arretInfo.CODEARRETC_ARRET+'"}',
+        success: function (result) {
+            ajax1.parseJSONP(result);
+        },
+        error: function (request, error) {
+            alert('Network error has occurred please try again!');
+        }
+    });
+    var ajax1 = {
+    parseJSONP: function (result) {
+        $.each(result.results, function (i, row) {
+            $('#numLignes').val(row.lineCode );
+            $('#departLigne').val(row.departName);
+            $('#directionLigne').val(row.destinationName);
+        });
+    }
+    }
+    
+
+    $.ajax1({
         url: 'https://api.parse.com/1/classes/Lignes/'+ligneInfo.OBJECTID_LIGNE,
         headers: { 'X-Parse-Application-Id': 'PIKbWCJ808pCwESSaqPbOiey1v8YP9ju6osXBbAw', 'X-Parse-REST-API-Key': 'SHqOLSBw51SjSqbqebycKPZlg6NxgjTMyN7EcN2p' },
         type: 'PUT',
         contentType: "application/json",
-        data: '{"lineCode":"'+ligneInfo.NUM_LIGNE+'", "nom":"'+ligneInfo.DEPART_LIGNE+'", "Direction":"'+ligneInfo.DESTINATION_LIGNE+'", "Arrets":{"__op":"AddUnique", "objects":'+tab+'}}',
+        data: '{"lineCode":"'+ligneInfo.NUM_LIGNE+'", "departName":"'+ligneInfo.DEPART_LIGNE+'", "destinationName":"'+ligneInfo.DESTINATION_LIGNE+'", "SequenceArret":{"__op":"AddUnique", "objects":'+tab+'}}',
         success: function (result) {
             $.mobile.changePage(href = "page7.html", { transition: "slide", changeHash: false });
             miseajour();
